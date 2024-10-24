@@ -2,7 +2,7 @@
 Author: wds-win11 wdsnpshy@163.com
 Date: 2024-10-23 12:42:28
 LastEditors: wds-wsl_ubuntu22 wdsnpshy@163.com
-LastEditTime: 2024-10-23 17:00:56
+LastEditTime: 2024-10-24 01:36:56
 FilePath: /Data_engineering/tools/getpic_tk.py
 Description: 分割脚本
 微信: 15310638214 
@@ -152,8 +152,8 @@ class ImageSplitter:
                 
                 cell = roi[start_y:end_y, start_x:end_x]
                 # 处理一下，把块的边框去掉，向内缩小10个像素，避免边框的干扰,然后用白色填充
-                cell = cell[10:-10, 10:-10]
-                cell = cv2.copyMakeBorder(cell, 10, 10, 10, 10, cv2.BORDER_CONSTANT, value=[255, 255, 255])
+                cell = cell[2:-2, 2:-2]
+                cell = cv2.copyMakeBorder(cell, 2, 2, 2, 2, cv2.BORDER_CONSTANT, value=[255, 255, 255])
                 output_path = os.path.join(output_folder, f"cell_{i}_{j}.png")
                 cv2.imwrite(output_path, cell)
 
